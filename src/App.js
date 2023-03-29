@@ -5,30 +5,34 @@ import Basket from "./components/Basket";
 function App() {
   const items = [
     {
-      name: "Apple",
+      name: "A",
       id: 1,
       price: 50,
       quantity: 1,
     },
     {
-      name: "Pear",
+      name: "B",
       id: 2,
       price: 30,
       quantity: 1,
     },
     {
-      name: "Kiwi",
+      name: "C",
       id: 3,
       price: 20,
       quantity: 1,
     },
     {
-      name: "Lemon",
+      name: "D",
       id: 4,
       price: 15,
       quantity: 1,
     },
   ];
+
+  const addItem = () => {};
+
+  const removeItem = () => {};
 
   return (
     <main className="w-screen h-screen ">
@@ -43,6 +47,8 @@ function App() {
               id={id}
               price={price}
               quantity={quantity}
+              addItem={addItem}
+              removeItem={removeItem}
             />
           ))}
         </div>

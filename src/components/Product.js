@@ -1,6 +1,6 @@
 import React from "react";
 
-function Product({ name, price, id, quantity }) {
+function Product({ name, price, id, quantity, addItem, removeItem }) {
   return (
     <main
       id={id}
@@ -14,11 +14,17 @@ function Product({ name, price, id, quantity }) {
               Price: <span className="font-semibold">{price} pp</span>
             </h3>
             <div className="flex items-center space-x-2">
-              <button className="px-2 rounded-full shadow-sm shadow-gray-500 focus:bg-gray-500 focus:text-white">
+              <button
+                onClick={addItem}
+                className="px-2 rounded-full shadow-sm shadow-gray-500 hover:bg-yellow-400"
+              >
                 -
               </button>
               <h2>{quantity}</h2>
-              <button className="px-2 rounded-full shadow-sm shadow-gray-500 focus:bg-gray-500 focus:text-white">
+              <button
+                onClick={removeItem}
+                className="px-2 rounded-full shadow-sm shadow-gray-500 hover:bg-yellow-400"
+              >
                 +
               </button>
             </div>
