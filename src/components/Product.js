@@ -1,11 +1,10 @@
 import React from "react";
 
-function Product({ name, price, image, id, quantity }) {
+function Product({ name, price, id, quantity }) {
   return (
-    <main>
-      <section className="">
+    <main id={id}>
+      <section className="flex items-center text-black">
         <div>
-          <img src={image} />
           <div>
             <h1>{name}</h1>
             <h3>Price: {price}</h3>
