@@ -32,7 +32,7 @@ function App() {
   ]);
 
   const incrementQty = (itemId) => {
-    const updateItem = items.map((item) =>
+    items.map((item) =>
       item.id === itemId
         ? { ...item, quantity: item.quantity++ }
         : item.quantity
@@ -42,7 +42,16 @@ function App() {
     setItems(newArr);
   };
 
-  // const decrementQty = (itemId) => {};
+  const decrementQty = (itemId) => {
+    const f = items.map((item) =>
+      item.id === itemId && item.quantity > 0
+        ? { ...item, quantity: item.quantity-- }
+        : item.quantity
+    );
+
+    let newArr = [...items];
+    setItems(newArr);
+  };
 
   return (
     <main className="w-screen h-screen ">
@@ -58,6 +67,7 @@ function App() {
               price={price}
               quantity={quantity}
               incrementQty={() => incrementQty(id)}
+              decrementQty={() => decrementQty(id)}
             />
           ))}
         </div>
