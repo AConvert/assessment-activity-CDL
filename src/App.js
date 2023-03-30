@@ -1,9 +1,10 @@
 import "./App.css";
 import Product from "./components/Product";
 import Basket from "./components/Basket";
+import { useState } from "react";
 
 function App() {
-  const items = [
+  const [items, setItems] = useState([
     {
       name: "A",
       id: 1,
@@ -28,11 +29,20 @@ function App() {
       price: 15,
       quantity: 1,
     },
-  ];
+  ]);
 
-  const addItem = () => {};
+  const incrementQty = (itemId) => {
+    const updateItem = items.map((item) =>
+      item.id === itemId
+        ? { ...item, quantity: item.quantity++ }
+        : item.quantity
+    );
 
-  const removeItem = () => {};
+    let newArr = [...items];
+    setItems(newArr);
+  };
+
+  // const decrementQty = (itemId) => {};
 
   return (
     <main className="w-screen h-screen ">
@@ -47,8 +57,7 @@ function App() {
               id={id}
               price={price}
               quantity={quantity}
-              addItem={addItem}
-              removeItem={removeItem}
+              incrementQty={() => incrementQty(id)}
             />
           ))}
         </div>
