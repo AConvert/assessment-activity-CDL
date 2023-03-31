@@ -4,6 +4,7 @@ import Basket from "./components/Basket";
 import { useState } from "react";
 
 function App() {
+  const [basketItems, setBasketItems] = useState([]);
   const [items, setItems] = useState([
     {
       name: "A",
@@ -43,7 +44,7 @@ function App() {
   };
 
   const decrementQty = (itemId) => {
-    const f = items.map((item) =>
+    items.map((item) =>
       item.id === itemId && item.quantity > 0
         ? { ...item, quantity: item.quantity-- }
         : item.quantity
@@ -52,6 +53,16 @@ function App() {
     let newArr = [...items];
     setItems(newArr);
   };
+
+  const addToBasket = (itemId, quantity) => {
+    const addItem = items.map((item) =>
+      item.id === itemId ? setBasketItems([...basketItems, item]) : null
+    );
+    // const groupDuplicate = basketItems.filter((item) => item.id === itemId);
+    // console.log(groupDuplicate);
+  };
+
+  // console.log(basketItems);
 
   return (
     <main className="w-screen h-screen ">
@@ -68,9 +79,18 @@ function App() {
               quantity={quantity}
               incrementQty={() => incrementQty(id)}
               decrementQty={() => decrementQty(id)}
+              addToBasket={() => addToBasket(id, quantity)}
             />
           ))}
         </div>
+        {basketItems.map((item) => {
+          return (
+            <div>
+              <h1>{item.name}</h1>
+              <h2>{item.quantity}</h2>
+            </div>
+          );
+        })}
         <Basket />
       </section>
     </main>

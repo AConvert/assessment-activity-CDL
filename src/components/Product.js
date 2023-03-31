@@ -1,6 +1,14 @@
 import React from "react";
 
-function Product({ name, price, id, quantity, incrementQty, decrementQty }) {
+function Product({
+  name,
+  price,
+  id,
+  quantity,
+  incrementQty,
+  decrementQty,
+  addToBasket,
+}) {
   return (
     <main
       id={id}
@@ -15,7 +23,6 @@ function Product({ name, price, id, quantity, incrementQty, decrementQty }) {
             </h3>
             <div className="flex items-center space-x-2">
               <button
-                // disabled={quantity.length <= 0}
                 onClick={decrementQty}
                 className="px-2 rounded-full shadow-sm shadow-gray-500 hover:bg-yellow-400"
               >
@@ -32,7 +39,10 @@ function Product({ name, price, id, quantity, incrementQty, decrementQty }) {
           </div>
         </div>
 
-        <button className="bg-yellow-400 px-3 py-1 text-md rounded-lg">
+        <button
+          onClick={addToBasket}
+          className="bg-yellow-400 px-3 py-1 text-md rounded-lg"
+        >
           Add to basket
         </button>
       </section>
