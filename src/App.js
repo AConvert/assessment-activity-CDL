@@ -58,8 +58,40 @@ function App() {
 
   const addToBasket = (itemId) => {
     const addItem = items.map((item) =>
-      item.id === itemId ? setBasketItems([...basketItems, item]) : null
+      item.id === itemId
+        ? setBasketItems([
+            ...basketItems,
+            {
+              name: item.name,
+              id: item.id,
+              price: item.price,
+              quantity: item.quantity,
+            },
+          ])
+        : null
     );
+
+    const total = basketItems?.reduce((tot, item) => {
+      return (tot += item.price);
+    }, 0);
+
+    console.log(total);
+
+    // const cart = {};
+    // basketItems.map((item) => {
+    //   if (cart[item.name]) {
+    //     setNewCart(cart[item.name].quantity++);
+    //   } else {
+    //     setNewCart(
+    //       (cart[item.name] = { price: item.price, quantity: item.quantity })
+    //     );
+    //   }
+    // });
+
+    // const eachPrice = basketItems.map((item) => {
+    //   let totalPrice = item.quantity;
+    //   console.log(totalPrice);
+    // });
 
     // const findDuplicate = basketItems.filter((item) => {
     //   if (item.id === itemId && item.quantity > 1) {
@@ -75,8 +107,9 @@ function App() {
     // }, {});
 
     // console.log(gropuedItems);
-    console.log(basketItems);
   };
+
+  // console.log(basketItems);
 
   return (
     <main className="w-screen h-screen ">
