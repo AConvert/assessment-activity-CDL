@@ -5,6 +5,8 @@ import { useState } from "react";
 
 function App() {
   const [basketItems, setBasketItems] = useState([]);
+
+  const [gropuedItems, setGroupedItems] = useState([]);
   const [items, setItems] = useState([
     {
       name: "A",
@@ -54,15 +56,27 @@ function App() {
     setItems(newArr);
   };
 
-  const addToBasket = (itemId, quantity) => {
+  const addToBasket = (itemId) => {
     const addItem = items.map((item) =>
       item.id === itemId ? setBasketItems([...basketItems, item]) : null
     );
-    // const groupDuplicate = basketItems.filter((item) => item.id === itemId);
-    // console.log(groupDuplicate);
-  };
 
-  // console.log(basketItems);
+    // const findDuplicate = basketItems.filter((item) => {
+    //   if (item.id === itemId && item.quantity > 1) {
+    //     console.log(item);
+    //   }
+    // });
+
+    // setGroupedItems(findDuplicate);
+
+    // const groupedItems = basketItems?.reduce((results, item) => {
+    //   (results[item.id] = results[item.id] || []).push(item);
+    //   console.log(results);
+    // }, {});
+
+    // console.log(gropuedItems);
+    console.log(basketItems);
+  };
 
   return (
     <main className="w-screen h-screen ">
@@ -79,19 +93,12 @@ function App() {
               quantity={quantity}
               incrementQty={() => incrementQty(id)}
               decrementQty={() => decrementQty(id)}
-              addToBasket={() => addToBasket(id, quantity)}
+              addToBasket={() => addToBasket(id)}
             />
           ))}
         </div>
-        {basketItems.map((item) => {
-          return (
-            <div>
-              <h1>{item.name}</h1>
-              <h2>{item.quantity}</h2>
-            </div>
-          );
-        })}
-        <Basket />
+
+        <Basket basketItems={basketItems} />
       </section>
     </main>
   );

@@ -1,7 +1,14 @@
 import React from "react";
+import Subtotal from "./Subtotal";
 
-function Basket() {
-  return <div>Basket</div>;
+function Basket({ basketItems }) {
+  return (
+    <main>
+      <section>
+        <Subtotal />
+      </section>
+    </main>
+  );
 }
 
 export default Basket;
