@@ -2,10 +2,16 @@ import React, { useEffect, useState } from "react";
 import Subtotal from "./Subtotal";
 
 function Basket({ basketItems }) {
-  const [totalPrice, setTotalPrice] = useState([]);
+  const [totalPrice, setTotalPrice] = useState("");
   const [newCart, setNewCart] = useState([]);
 
   useEffect(() => {
+    const total = basketItems?.reduce((tot, item) => {
+      return (tot += item.price);
+    }, 0);
+
+    setTotalPrice(total);
+
     const cart = [];
     basketItems.map((item) => {
       if (cart[item.name]) {
@@ -15,23 +21,9 @@ function Basket({ basketItems }) {
       }
     });
 
-    // newCart(cart);
+    newCart(cart);
   }, [basketItems]);
 
-  // console.log(newCart);
-
-  // const gropuItems = {
-  //   const cart = {};
-  //   basketItems.map((item) => {
-  //     if (cart[item.name]) {
-  //       setNewCart(cart[item.name].quantity++);
-  //     } else {
-  //       setNewCart(
-  //         (cart[item.name] = { price: item.price, quantity: item.quantity })
-  //       );
-  //     }
-  //   });
-  // }
   return (
     <main>
       <section>
