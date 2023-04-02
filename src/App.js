@@ -5,6 +5,7 @@ import { useState } from "react";
 
 function App() {
   const [basketItems, setBasketItems] = useState([]);
+  const [discTot, setDiscTot] = useState(null);
   const [items, setItems] = useState([
     {
       name: "A",

@@ -2,7 +2,10 @@ import React from "react";
 
 function BasketProduct({ name, price, quantity, id }) {
   return (
-    <main id={id} className="w-full p-2 my-1 shadow-sm shadow-gray-500">
+    <main
+      id={id}
+      className="w-full relative p-4 my-1 shadow-sm shadow-gray-500"
+    >
       <section className="flex items-center justify-evenly relative">
         <div>
           <h1 className="text-md font-semibold">Name</h1>

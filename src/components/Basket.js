@@ -7,20 +7,17 @@ function Basket({ basketItems }) {
   const [groupedItems, setGroupedItems] = useState([]);
   const [disc3, setDisc3] = useState(false);
   const [disc2, setDisc2] = useState(false);
-  const [priceDisc3, setPriceDisc3] = useState(null);
-  const [priceDisc2, setPriceDisc2] = useState(null);
-  const [price, setPrice] = useState(null);
 
   useEffect(() => {
     const total = basketItems?.reduce((tot, item) => {
       let t = item.price * item.quantity;
-      if (item.name === "A" && item.quantity % 3 == 0) {
+      if (item.name === "A" && item.quantity % 3 === 0) {
         let discFor3 = 20;
         let case1 = t - discFor3;
         setDisc3(true);
         return (tot += case1);
       }
-      if (item.name === "B" && item.quantity % 2 == 0) {
+      if (item.name === "B" && item.quantity % 2 === 0) {
         let discFor2 = 15;
         let case2 = t - discFor2;
         setDisc2(true);
