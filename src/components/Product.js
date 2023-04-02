@@ -12,8 +12,22 @@ function Product({
   return (
     <main
       id={id}
-      className="shadow-sm shadow-gray-500 rounded-lg w-96 py-3 px-3 my-3 hover:scale-105"
+      className="shadow-sm relative shadow-gray-500 rounded-lg w-96 py-3 px-3 my-3 hover:scale-105"
     >
+      {id === 1 && (
+        <div className="absolute z-2 top-2 right-2">
+          <h1 className="text-xs text-white rounded-sm bg-red-500 p-2">
+            Buy 3, get 20% discount
+          </h1>
+        </div>
+      )}
+      {id === 2 && (
+        <div className="absolute z-2 top-2 right-2">
+          <h1 className="text-xs text-white bg-red-500 rounded-sm p-2">
+            Buy 2, get 25% discount
+          </h1>
+        </div>
+      )}
       <section className="flex items-end space-x-36 text-black">
         <div>
           <div className="flex flex-col space-y-1">
