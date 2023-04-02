@@ -2,10 +2,11 @@ import "./App.css";
 import Product from "./components/Product";
 import Basket from "./components/Basket";
 import { useState } from "react";
+import { useEffect } from "react";
 
 function App() {
   const [basketItems, setBasketItems] = useState([]);
-  const [discTot, setDiscTot] = useState(null);
+
   const [items, setItems] = useState([
     {
       name: "A",
@@ -70,6 +71,10 @@ function App() {
         ])
     );
   };
+
+  useEffect(() => {
+    setNewPrice(discTot);
+  }, [discTot]);
 
   return (
     <main className="w-screen h-screen ">
